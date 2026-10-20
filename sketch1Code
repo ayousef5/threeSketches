@@ -1,0 +1,33 @@
+
+function setup() {
+  createCanvas(600, 600); // Create the canvas
+  background(255); // Make the background white
+
+  let spacing = 50; // Space between squares
+  let margin = 50; // Space around the grid
+  let baseSize = 24; // Small square size
+  let largeSize = 42; // Large square size
+
+  stroke(0); // Make outlines black
+  strokeWeight(2); // Set outline thickness
+
+  // Go through each row
+  for (let y = margin; y < height - margin; y += spacing) {
+
+    // Go through each column
+    for (let x = margin; x < width - margin; x += spacing) {
+
+      let column = (x - margin) / spacing; // Get the column number
+      let row = (y - margin) / spacing; // Get the row number
+
+      // Choose which squares are large and black
+      if ((column + row) % 4 == 0) {
+        fill(0); // Fill the square black
+        rect(x, y, largeSize, largeSize); // Draw a large square
+      } else {
+        noFill(); // Leave the inside white
+        rect(x, y, baseSize, baseSize); // Draw a small square
+      }
+    }
+  }
+}
